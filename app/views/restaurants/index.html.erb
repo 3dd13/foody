@@ -1,2 +1,26 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<h1>Restaurants</h1>
+
+<h2>Search with Get</h2>
+<form action="/restaurants/index" method="get">
+  <input type="text" name="name" placeholder="Restaurant Name here" >
+  <input type="submit" >
+</form>
+
+<h2>Search with Post</h2>
+<form action="/restaurants/index" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="name" placeholder="Restaurant Name here" >
+  <input type="submit" >
+</form>
+
+<p>Searching: <%= @restaurant_name %></p>
+
+<p>Id: <%= @restaurant_id %></p>
+
+<ul>
+  <% @filtered_restaurants.each do |restaurant_name| %>
+    <li>
+      <%= restaurant_name %>
+    </li>
+  <% end %>
+</ul>
